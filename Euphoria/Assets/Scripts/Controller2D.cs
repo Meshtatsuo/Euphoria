@@ -14,14 +14,14 @@ public class Controller2D : MonoBehaviour {
     float horizontalRaySpacing;
     float verticalRaySpacing;
 
-    BoxCollider2D collider;
+    BoxCollider2D objectCollider;
     RaycastOrigins raycastOrigins;
     public CollisionInfo collisions;
     
     // Use this for initialization
 	void Start ()
     {
-        collider = GetComponent<BoxCollider2D>();
+        objectCollider = GetComponent<BoxCollider2D>();
         CalculateRaySpacing();
     }
 
@@ -99,7 +99,7 @@ public class Controller2D : MonoBehaviour {
 
     void UpdateRaycastOrigins()
     {
-        Bounds bounds = collider.bounds;
+        Bounds bounds = objectCollider.bounds;
         bounds.Expand(skinWidth * -2);
 
         //setting raycast origins for each corner of collider
@@ -112,7 +112,7 @@ public class Controller2D : MonoBehaviour {
 
     void CalculateRaySpacing()
     {
-        Bounds bounds = collider.bounds;
+        Bounds bounds = objectCollider.bounds;
         bounds.Expand(skinWidth * -2);
 
         horizontalRayCount = Mathf.Clamp(horizontalRayCount, 2, int.MaxValue);
