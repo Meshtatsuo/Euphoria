@@ -84,7 +84,8 @@
     <Compile Include="Assets\Scripts\LevelExit.cs" />
     <Compile Include="Assets\Scripts\MenuScript.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\TurretBehavior.cs" />
+    <Compile Include="Assets\Scripts\RotateTurret.cs" />
+    <Compile Include="Assets\Scripts\TurretInteraction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

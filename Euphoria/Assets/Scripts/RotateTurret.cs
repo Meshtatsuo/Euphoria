@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretBehavior : MonoBehaviour {
+public class RotateTurret : MonoBehaviour {
 
     /*
      * CONTROLS TURRET AND MONITORS FOR PLAYER.
@@ -14,9 +14,11 @@ public class TurretBehavior : MonoBehaviour {
 
     //VARIABLES FOR CONTROLLING TURRET MOTION
     public float pivotSpeed = 10f;
-    public float minClamp = -45;
+    public float minClamp = 315;
     public float maxClamp = 45;
     public float currentRotation = 0;
+
+    public bool playerIsColliding = false;
 
     //last rotation variable used to manage rotation
     // 0 = CounterClockwise, 1 = clockwise
@@ -29,9 +31,9 @@ public class TurretBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (lastRotation == 0)
+        if (lastRotation == 0 && playerIsColliding == false)
         {
-            if (currentRotation < 45)
+            if (currentRotation < 45 || (0 <= currentRotation && currentRotation >= 315))
             {
                 RotateCounterClockwise();
             }
@@ -48,9 +50,9 @@ public class TurretBehavior : MonoBehaviour {
             }
         }
 
-        if (lastRotation == 1)
+        if (lastRotation == 1 && playerIsColliding == false)
         {
-            if (currentRotation < 315)
+            if (currentRotation > 315 || ( 0 <= currentRotation && currentRotation <= 45))
             {
                 RotateClockwise();
             }
